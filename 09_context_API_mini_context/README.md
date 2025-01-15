@@ -14,7 +14,7 @@ import UserContext from './UserContext'
 function UserContextProvider({children}) {
     const [user, setUser] = React.useState({name: 'John', age: 25})
   return (
-    <UserContext.Provider value={{user}}>
+    <UserContext.Provider value={{user, setUser}}>
         {children}
     </UserContext.Provider>
   )
@@ -22,6 +22,15 @@ function UserContextProvider({children}) {
 
 export default UserContextProvider
 ```
+# But why UseContext?
+```js
+    <UserContext.Provider value={{user, setUser}}>
+        {children}
+    </UserContext.Provider>
+```
+- All the paramaters passed inside `value = {}` would be accessible through te UseContext() Hook.
+- `const {setUser} = useContext(UserContext)` is be used to extract the setUser function from UserContext
+- `const {user} = useContext(UserContext)` is used to extract the user data from UserContext
 
 # Login.jsx
 ```js
